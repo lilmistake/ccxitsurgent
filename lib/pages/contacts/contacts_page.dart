@@ -2,6 +2,7 @@ import 'package:ccxitsurgent/core/icons.dart';
 import 'package:ccxitsurgent/models/test_data.dart';
 import 'package:ccxitsurgent/pages/contacts/widgets/contacts_container.dart';
 import 'package:ccxitsurgent/pages/contacts/widgets/contacts_searchbar.dart';
+import 'package:ccxitsurgent/pages/notification/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/widgets/navbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,9 +23,7 @@ class ContactsPage extends StatelessWidget {
               future: getRandomUsers(10),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator(
-                    color: Colors.black,
-                  );
+                  return const Loading();
                 }
                 return Column(
                     children: snapshot.data!
@@ -46,7 +45,7 @@ class ContactsPage extends StatelessWidget {
         children: [
           const Expanded(
             child: Text(
-              "Contact",
+              "Contacts",
               textAlign: TextAlign.left,
               style: TextStyle(fontSize: 30),
             ),
