@@ -1,8 +1,9 @@
-import 'dart:math';
+import 'package:ccxitsurgent/models/notification_model.dart';
 import 'package:flutter/material.dart';
 
 class NotificationContainer extends StatelessWidget {
-  const NotificationContainer({super.key});
+  const NotificationContainer({super.key, required this.notification});
+  final NotificationModel notification;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class NotificationContainer extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(99999),
             child: Image.network(
-              "http://xsgames.co/randomusers/assets/avatars/pixel/${Random().nextInt(53).toString()}.jpg",
+              notification.sender.avatar,
               filterQuality: FilterQuality.medium,
               width: 50,
             ),
@@ -26,12 +27,12 @@ class NotificationContainer extends StatelessWidget {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Lorem Ipsum",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                notification.sender.name,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Text("needs to urgently get in touch"),
+              const Text("needs to urgently get in touch"),
             ],
           ),
           const Expanded(child: SizedBox()),

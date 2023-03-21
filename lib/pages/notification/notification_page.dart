@@ -1,7 +1,9 @@
+import 'package:ccxitsurgent/models/test_data.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/core/icons.dart';
 import 'package:ccxitsurgent/widgets/navbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'loading_indicator.dart';
 import 'widgets/notification_container.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -11,11 +13,23 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
-      body: ListView(
-        children: [
-          _titleBlock(context),
-          ...List.filled(5, const NotificationContainer())
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _titleBlock(context),
+            FutureBuilder(
+              future: getRandomNotifs(5),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting)  return const Loading();
+                
+                return Column(
+                    children: snapshot.data!
+                        .map((e) => NotificationContainer(notification: e))
+                        .toList());
+              },
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: const NavBar(),
     );
@@ -54,3 +68,4 @@ class NotificationPage extends StatelessWidget {
     );
   }
 }
+

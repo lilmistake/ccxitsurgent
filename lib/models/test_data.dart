@@ -1,12 +1,29 @@
 import 'dart:convert';
 import 'package:ccxitsurgent/models/enums.dart';
+import 'package:ccxitsurgent/models/notification_model.dart';
 import 'user_model.dart';
 import 'package:http/http.dart' as http;
 
 List<User> users = [];
+List<NotificationModel> notifs = [];
+
+Future<List<NotificationModel>> getRandomNotifs(int size) async {
+  List<User> users = await getRandomUsers(size);
+  if (notifs.isNotEmpty && size <= notifs.length) {
+    return notifs.sublist(0, size);
+  }
+  for (User user in users) {
+    notifs.add(NotificationModel(
+        priority: Priority.medium,
+        sender: user,
+        subject: "",
+        ts: DateTime.now().millisecondsSinceEpoch));
+  }
+  return notifs;
+}
 
 Future<List<User>> getRandomUsers(int size) async {
-  if (users.isNotEmpty) return users;
+  if (users.isNotEmpty && size <= users.length) return users.sublist(0, size);
   Uri uri =
       Uri.parse("https://random-data-api.com/api/users/random_user?size=$size");
   var response = await http.get(uri);
