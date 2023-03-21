@@ -14,6 +14,8 @@ This will make sure `B` can focus on their work, while people can still contact 
 
 # Current progress
 - [x] Created basic UI mockup
+- [x] Added models for user and notifications, fetching placeholder data from an API
+- [ ] Show priority on notification and more details on click.
 
-<img src="https://user-images.githubusercontent.com/61899816/226410863-987d7178-185e-480f-b200-365f57a7ca0d.png" width="20%"><img src="https://user-images.githubusercontent.com/61899816/226410877-f6e6bb69-b95a-48f1-8221-af619d33b5c5.png" width="20%"><img src="https://user-images.githubusercontent.com/61899816/226413635-5a699ccb-ba55-4862-ba4f-3e0326d7deb2.png" width="20%"><img src="https://user-images.githubusercontent.com/61899816/226410867-e46ebe25-1a22-4fbf-b5ef-f3cbf5e2ae17.png" width="20%"><img src="https://user-images.githubusercontent.com/61899816/226410872-5e57f1fb-9b26-4f13-a63a-c59c6f6b9340.png" width="20%">
 
+<img src="https://user-images.githubusercontent.com/61899816/226570860-f46b83ec-09e2-46c1-9479-1f1cf2a389bd.png" width="20%" alt="progress screenshot"><img src="https://user-images.githubusercontent.com/61899816/226570880-43d84ea7-3439-4a31-99e9-6578eebbb700.png" width="20%" alt="progress screenshot"><img src="https://user-images.githubusercontent.com/61899816/226570895-ffa9ca91-9293-4480-bb04-8b90c86cc12a.png" width="20%" alt="progress screenshot"><img src="https://user-images.githubusercontent.com/61899816/226570902-75e43c19-7c9c-4924-b93e-7c08b5d47455.png" width="20%" alt="progress screenshot"><img src="https://user-images.githubusercontent.com/61899816/226570889-f47f1c1a-a218-4738-a9e5-5a3ff93b3e65.png" width="20%" alt="progress screenshot">
