@@ -1,4 +1,5 @@
 import 'package:ccxitsurgent/core/icons.dart';
+import 'package:ccxitsurgent/models/test_data.dart';
 import 'package:ccxitsurgent/pages/contacts/widgets/contacts_container.dart';
 import 'package:ccxitsurgent/pages/contacts/widgets/contacts_searchbar.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,20 @@ class ContactsPage extends StatelessWidget {
           children: [
             _titleBlock(context),
             const SearchBar(),
-            ...List.filled(15, const ContactContainer())
+            FutureBuilder(
+              future: getRandomUsers(10),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator(
+                    color: Colors.black,
+                  );
+                }
+                return Column(
+                    children: snapshot.data!
+                        .map((e) => ContactContainer(user: e))
+                        .toList());
+              },
+            ),
           ],
         ),
       ),
