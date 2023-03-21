@@ -1,13 +1,14 @@
-import 'dart:math';
+import 'package:ccxitsurgent/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class ContactContainer extends StatelessWidget {
-  const ContactContainer({super.key});
+  const ContactContainer({super.key, required this.user});
+  final User user;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.background,
       ),
       padding: const EdgeInsets.all(10),
@@ -16,7 +17,7 @@ class ContactContainer extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(99999),
             child: Image.network(
-              "http://xsgames.co/randomusers/assets/avatars/pixel/${Random().nextInt(53).toString()}.jpg",
+              user.avatar,
               filterQuality: FilterQuality.medium,
               width: 50,
             ),
@@ -24,9 +25,14 @@ class ContactContainer extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          const Text("Lorem Ipsum"),
+          Text(user.name),
           const Expanded(child: SizedBox()),
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert, color: Theme.of(context).colorScheme.onPrimary,))
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ))
         ],
       ),
     );
