@@ -16,7 +16,7 @@ Future<List<NotificationModel>> getRandomNotifs(int size) async {
     notifs.add(NotificationModel(
         priority: Priority.medium,
         sender: user,
-        subject: "",
+        subject: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
         ts: DateTime.now().millisecondsSinceEpoch));
   }
   return notifs;
