@@ -2,7 +2,7 @@ import 'package:ccxitsurgent/core/icons.dart';
 import 'package:ccxitsurgent/models/test_data.dart';
 import 'package:ccxitsurgent/pages/contacts/widgets/contacts_container.dart';
 import 'package:ccxitsurgent/pages/contacts/widgets/contacts_searchbar.dart';
-import 'package:ccxitsurgent/pages/notification/loading_indicator.dart';
+import 'package:ccxitsurgent/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/widgets/navbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';

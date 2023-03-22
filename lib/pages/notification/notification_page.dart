@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/core/icons.dart';
 import 'package:ccxitsurgent/widgets/navbar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'loading_indicator.dart';
+import '../../widgets/loading_indicator.dart';
 import 'widgets/notification_container.dart';
 
 class NotificationPage extends StatelessWidget {
