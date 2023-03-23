@@ -27,7 +27,7 @@ ThemeData lightTheme = ThemeData(
       primary: Colors.white,
       onPrimary: Colors.grey.shade300,
       secondary: Colors.grey.shade200,
-      onSecondary: Colors.black,     
+      onSecondary: Colors.grey.shade700,
       background: Colors.white,
       onBackground: Colors.black,
     ));
