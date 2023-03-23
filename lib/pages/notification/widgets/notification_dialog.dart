@@ -49,12 +49,9 @@ class NotificationDialog extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(notification.subject),
-              const SizedBox(
-                height: 30,
+              Container(
+                margin: const EdgeInsets.only(top: 20, bottom: 20),
+                child: Text(notification.subject),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
