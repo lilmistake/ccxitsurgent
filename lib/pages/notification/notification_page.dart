@@ -2,7 +2,6 @@ import 'package:ccxitsurgent/models/test_data.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/core/icons.dart';
 import 'package:ccxitsurgent/widgets/navbar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/loading_indicator.dart';
 import 'widgets/notification_container.dart';
 
@@ -20,8 +19,11 @@ class NotificationPage extends StatelessWidget {
             FutureBuilder(
               future: getRandomNotifs(5),
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting)  return const Loading();
-                
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Loading();
+                }
+                ;
+
                 return Column(
                     children: snapshot.data!
                         .map((e) => NotificationContainer(notification: e))
@@ -56,16 +58,11 @@ class NotificationPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
                     shape: BoxShape.circle),
-                child: SvgPicture.string(
-                  CustomIcons.eraser,
-                  width: 20,
-                  colorFilter:
-                      const ColorFilter.mode(Colors.red, BlendMode.srcIn),
-                )),
+                child: customIcon(
+                    svg: CustomIcons.eraser, color: Colors.red, width: 20)),
           ),
         ],
       ),
     );
   }
 }
-

@@ -5,7 +5,6 @@ import 'package:ccxitsurgent/pages/contacts/widgets/contacts_searchbar.dart';
 import 'package:ccxitsurgent/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/widgets/navbar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({super.key});
@@ -54,18 +53,13 @@ class ContactsPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(999),
             onTap: () {},
             child: Container(
-              padding: const EdgeInsets.all(12),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
-                  shape: BoxShape.circle),
-              child: SvgPicture.string(
-                CustomIcons.dnd,
-                height: 20,
-                colorFilter:
-                    const ColorFilter.mode(Colors.red, BlendMode.srcIn),
-              ),
-            ),
+                padding: const EdgeInsets.all(12),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    shape: BoxShape.circle),
+                child: customIcon(
+                    svg: CustomIcons.dnd, color: Colors.red, width: 20)),
           ),
         ],
       ),

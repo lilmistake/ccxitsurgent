@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/core/icons.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ccxitsurgent/pages/pages.dart';
 // todo: refactor
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
   static final List<Map<String, Widget>> items = [
     {CustomIcons.people: const ContactsPage()},
-    {CustomIcons.notifications: const NotificationPage()},    
+    {CustomIcons.notifications: const NotificationPage()},
     {'profile': const SettingsPage()}
   ];
 
@@ -23,28 +22,20 @@ class _NavBarState extends State<NavBar> {
         .sublist(0, NavBar.items.length - 1)
         .map((e) => BottomNavigationBarItem(
             activeIcon: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
-                  shape: BoxShape.circle),
-              child: SvgPicture.string(
-                e.keys.first,
-                colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.onSecondary, BlendMode.srcIn),
-                width: 20,
-              ),
-            ),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    shape: BoxShape.circle),
+                child: customIcon(
+                    svg: e.keys.first,
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    width: 20)),
             icon: Container(
-              padding: const EdgeInsets.all(10),
-              child: SvgPicture.string(
-                e.keys.first,
-                alignment: Alignment.center,
-                width: 20,
-                fit: BoxFit.contain,
-                colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.onSecondary, BlendMode.srcIn),
-              ),
-            ),
+                padding: const EdgeInsets.all(10),
+                child: customIcon(
+                    svg: e.keys.first,
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    width: 20)),
             label: ""))
         .toList();
   }
@@ -82,7 +73,9 @@ class _NavBarState extends State<NavBar> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: (currentIndex == NavBar.items.length-1) ? Theme.of(context).colorScheme.secondary: null,
+                  color: (currentIndex == NavBar.items.length - 1)
+                      ? Theme.of(context).colorScheme.secondary
+                      : null,
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(99999),
