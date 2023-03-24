@@ -36,13 +36,6 @@ class ContactContainer extends StatelessWidget {
               width: 10,
             ),
             Text(user.name),
-            const Expanded(child: SizedBox()),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.more_vert,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ))
           ],
         ),
       ),

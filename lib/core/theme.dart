@@ -16,7 +16,7 @@ class ThemeProvider extends ChangeNotifier {
 
 ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    iconTheme: IconThemeData(color: Colors.grey.shade700),
+    iconTheme: const IconThemeData(color: Colors.grey),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: Colors.grey.shade700),
       border: InputBorder.none,
