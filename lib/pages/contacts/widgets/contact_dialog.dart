@@ -1,4 +1,5 @@
 import 'package:ccxitsurgent/models/user_model.dart';
+import 'package:ccxitsurgent/widgets/profile_picture.dart';
 import 'package:flutter/material.dart';
 
 class ContactDialog extends StatelessWidget {
@@ -27,40 +28,7 @@ class ContactDialog extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Stack(
-                            alignment: Alignment.bottomRight,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(99999),
-                                child: Container(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                  child: Image.network(
-                                    user.avatar,
-                                    filterQuality: FilterQuality.medium,
-                                    width: 75,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 2,
-                                right: 2,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          strokeAlign: 0,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .background,
-                                          width: 3),
-                                      color: Colors.green,
-                                      shape: BoxShape.circle),
-                                  width: 18,
-                                  height: 18,
-                                ),
-                              )
-                            ],
-                          ),
+                          ProfilePicture(user: user),
                         ],
                       ),
                       const SizedBox(
@@ -75,25 +43,30 @@ class ContactDialog extends StatelessWidget {
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Theme.of(context).colorScheme.secondary),
-                        margin: const EdgeInsets.only(top: 10, bottom: 10),
-                        padding: const EdgeInsets.all(5),
-                        child: IntrinsicHeight(
+                      InkWell(
+                        splashColor: Colors.red,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Theme.of(context).colorScheme.secondary),
+                          margin: const EdgeInsets.only(top: 10, bottom: 10),
+                          padding: const EdgeInsets.all(10),
                           child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                _contactButtons(
-                                    icon: Icons.call, label: "Call"),
-                                const VerticalDivider(),
-                                _contactButtons(
-                                    icon: Icons.mail, label: "E-mail"),
-                                const VerticalDivider(),
-                                _contactButtons(
-                                    icon: Icons.message, label: "Message"),
-                              ]),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: const [
+                              Icon(Icons.call),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Request call",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(
