@@ -4,4 +4,4 @@ enum Status {
   dnd,
 }
 
-enum Priority { low, medium, hight }
+enum Priority { low, medium, high }
