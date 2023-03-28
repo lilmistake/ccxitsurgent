@@ -1,9 +1,12 @@
+import 'package:ccxitsurgent/models/enums.dart';
 import 'package:ccxitsurgent/widgets/profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/models/notification_model.dart';
+import 'package:intl/intl.dart';
 
 class NotificationDialog extends StatelessWidget {
-  const NotificationDialog({super.key, required this.notification});
+  const NotificationDialog({Key? key, required this.notification})
+      : super(key: key);
   final NotificationModel notification;
 
   @override
@@ -24,13 +27,21 @@ class NotificationDialog extends StatelessWidget {
                   const SizedBox(width: 10,),
                   Expanded(
                     child: FittedBox(
-                      alignment: Alignment.centerLeft,
                       fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             notification.sender.name,
                             style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            DateFormat("EEE, h:m").format(
+                                DateTime.fromMillisecondsSinceEpoch(
+                                    notification.ts)),
+                            style: const TextStyle(fontSize: 12),
                           ),
                         ],
                       ),
@@ -43,34 +54,42 @@ class NotificationDialog extends StatelessWidget {
                 child: Text(notification.subject),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.replay,
-                          color: Colors.blue,
-                        ),
-                        Text(" Remind me later")
-                      ],
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: getPriorityColor(notification.priority)),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Text(
+                        '${notification.priority.toString().split('.').last} priority',
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ),
-                        Text(" Ignore")
-                      ],
-                    ),
-                  )
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.close, color: Colors.red),
+                    label: const Text('Ignore',
+                        style: TextStyle(color: Colors.red)),
+                  ),
+                  TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.check_circle, color: Colors.green),
+                    label: const Text('Accept',
+                        style: TextStyle(color: Colors.green)),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
