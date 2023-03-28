@@ -2,15 +2,12 @@ import 'package:ccxitsurgent/models/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/models/user_model.dart';
 
-Map<Status, Color> statusColor = {
-  Status.available: Colors.green,
-  Status.busy: Colors.yellow,
-  Status.dnd: Colors.red
-};
-
 class ProfilePicture extends StatelessWidget {
   const ProfilePicture(
-      {super.key, required this.user, this.width=75, this.includeStatus = true});
+      {super.key,
+      required this.user,
+      this.width = 75,
+      this.includeStatus = true});
   final double? width;
   final User user;
   final bool? includeStatus;
@@ -33,18 +30,18 @@ class ProfilePicture extends StatelessWidget {
         ),
         if (includeStatus!)
           Positioned(
-            bottom: width!/38,
-            right: width!/38,
+            bottom: width! / 38,
+            right: width! / 38,
             child: Container(
+              padding: const EdgeInsets.all(1),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      strokeAlign: 0,
-                      color: Theme.of(context).colorScheme.background,
-                      width: 3),
-                  color: statusColor[user.status],
+                  color: Theme.of(context).colorScheme.background,
                   shape: BoxShape.circle),
-              width: width! / 4.16, // just a random factor
-              height: width! / 4.16, // just a random factor
+              child: Icon(
+                getStatusIcon(user.status),
+                size: width! / 4,
+                color: getStatusColor(user.status),
+              ),
             ),
           )
       ],
