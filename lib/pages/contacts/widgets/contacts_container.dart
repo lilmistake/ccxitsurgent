@@ -1,4 +1,5 @@
 import 'package:ccxitsurgent/models/user_model.dart';
+import 'package:ccxitsurgent/widgets/profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'contact_dialog.dart';
 
@@ -24,13 +25,9 @@ class ContactContainer extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(99999),
-              child: Image.network(
-                user.avatar,
-                filterQuality: FilterQuality.medium,
-                width: 50,
-              ),
+            ProfilePicture(
+              user: user,
+              width: 50,
             ),
             const SizedBox(
               width: 10,

@@ -1,3 +1,4 @@
+import 'package:ccxitsurgent/widgets/profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:ccxitsurgent/models/notification_model.dart';
 
@@ -19,20 +20,8 @@ class NotificationDialog extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
-                        shape: BoxShape.circle),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(999),
-                        child: Image.network(
-                          notification.sender.avatar,
-                          width: 50,
-                          filterQuality: FilterQuality.medium,
-                        )),
-                  ),
+                  ProfilePicture(user: notification.sender, width: 50,),
+                  const SizedBox(width: 10,),
                   Expanded(
                     child: FittedBox(
                       alignment: Alignment.centerLeft,

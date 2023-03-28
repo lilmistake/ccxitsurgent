@@ -1,4 +1,5 @@
 import 'package:ccxitsurgent/models/notification_model.dart';
+import 'package:ccxitsurgent/widgets/profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'notification_dialog.dart';
 
@@ -23,13 +24,9 @@ class NotificationContainer extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(99999),
-              child: Image.network(
-                notification.sender.avatar,
-                filterQuality: FilterQuality.medium,
-                width: 50,
-              ),
+            ProfilePicture(
+              user: notification.sender,
+              width: 50,
             ),
             const SizedBox(
               width: 10,
