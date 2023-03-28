@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:ccxitsurgent/models/enums.dart';
 import 'package:ccxitsurgent/models/notification_model.dart';
 import 'user_model.dart';
@@ -14,7 +15,7 @@ Future<List<NotificationModel>> getRandomNotifs(int size) async {
   }
   for (User user in users) {
     notifs.add(NotificationModel(
-        priority: Priority.medium,
+        priority: randomPriority(),
         sender: user,
         subject: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
         ts: DateTime.now().millisecondsSinceEpoch));
@@ -35,7 +36,10 @@ Future<List<User>> getRandomUsers(int size) async {
         name: "${doc['first_name']} ${doc['last_name']}",
         contactDetails:
             ContactDetails(email: [doc['email']], phone: [doc['phone_number']]),
-        status: Status.available));
+        status: randomStatus()));
   }
   return users;
 }
+
+Priority randomPriority() =>  Priority.values.elementAt(Random().nextInt(Priority.values.length));
+Status randomStatus() => Status.values.elementAt(Random().nextInt(Status.values.length));
