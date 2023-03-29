@@ -39,7 +39,7 @@ class ProfilePicture extends StatelessWidget {
                   shape: BoxShape.circle),
               child: Icon(
                 getStatusIcon(user.status),
-                size: width! / 4,
+                size: width! / 3.5,
                 color: getStatusColor(user.status),
               ),
             ),
