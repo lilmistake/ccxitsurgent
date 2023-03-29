@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 enum Status {
+  away,  
   available,
   busy,
   dnd,
@@ -29,6 +30,9 @@ Color getStatusColor(Status status) {
       return Colors.yellow;
     case Status.dnd:
       return Colors.red;
+    case Status.away:
+      return Colors.grey;
+
   }
 }
 
@@ -40,5 +44,7 @@ IconData getStatusIcon(Status status) {
       return Icons.watch_later_sharp;
     case Status.dnd:
       return Icons.do_not_disturb_on;
+    case Status.away:
+      return Icons.pause_circle;
   }
 }
